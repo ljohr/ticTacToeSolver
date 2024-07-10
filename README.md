@@ -27,4 +27,8 @@ This is a simple 4x4 Tic Tac Toe game solver written in TypeScript. The function
 
     ```bash
     npm install
-    ```
+
+## Run the Test
+```
+npx jest
+```

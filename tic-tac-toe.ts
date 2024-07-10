@@ -10,9 +10,10 @@ class TicTacToe {
       ["", "", "", ""],
     ];
     this.winningCombinations = this.generateWinningCombinations();
-    console.log(this.winningCombinations);
   }
 
+  // Creates a 2d array which represents the Tic Tac Toe Board
+  // Stores all winning combinations
   private generateWinningCombinations(): Array<Array<[number, number]>> {
     const combinations: Array<Array<[number, number]>> = [];
 
@@ -74,6 +75,27 @@ class TicTacToe {
   }
 
   public checkWinner(): string | null {
+    for (const combo of this.winningCombinations) {
+      const [firstPos, secondPos, thirdPos, fourthPos] = combo;
+
+      // Store the X or O marks in the current winning combination
+      const [firstMark, secondMark, thirdMark, fourthMark] = [
+        this.board[firstPos[0]][firstPos[1]],
+        this.board[secondPos[0]][secondPos[1]],
+        this.board[thirdPos[0]][thirdPos[1]],
+        this.board[fourthPos[0]][fourthPos[1]],
+      ];
+
+      if (
+        firstMark &&
+        firstMark === secondMark &&
+        firstMark === thirdMark &&
+        firstMark === fourthMark
+      ) {
+        return firstMark;
+      }
+    }
+
     return null;
   }
 
@@ -85,3 +107,6 @@ class TicTacToe {
     return false;
   }
 }
+
+const game = new TicTacToe();
+game.checkWinner();

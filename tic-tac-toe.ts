@@ -125,6 +125,4 @@ class TicTacToe {
   }
 }
 
-const game = new TicTacToe();
-game.checkWinner();
-game.anyMovesLeft();
+export default TicTacToe;

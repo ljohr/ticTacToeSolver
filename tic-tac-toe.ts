@@ -86,6 +86,7 @@ class TicTacToe {
         this.board[fourthPos[0]][fourthPos[1]],
       ];
 
+      // If each position is not empty and is the same return the X or O mark
       if (
         firstMark &&
         firstMark === secondMark &&
@@ -99,14 +100,31 @@ class TicTacToe {
     return null;
   }
 
+  // Empty positions are denoted by a empty string in this.board
+  // Check if there are any empty positions
   public anyMovesLeft(): boolean {
+    for (let row = 0; row < 4; row++) {
+      if (this.board[row].indexOf("") !== -1) {
+        return true;
+      }
+    }
+
     return false;
   }
 
   public isGameOver(): boolean {
+    if (this.checkWinner() !== null) {
+      return true;
+    }
+
+    if (this.anyMovesLeft() == false) {
+      return true;
+    }
+
     return false;
   }
 }
 
 const game = new TicTacToe();
 game.checkWinner();
+game.anyMovesLeft();
